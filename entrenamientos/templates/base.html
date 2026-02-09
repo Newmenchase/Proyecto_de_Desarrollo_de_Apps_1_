@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TrainSystem</title>
+
+    <!-- CSS PRINCIPAL -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="nav-logo">
+        TrainSystem
+    </div>
+
+    <div class="nav-links">
+        {% if user.is_authenticated %}
+            <span>Hola {{ user.username }}</span>
+
+            <a href="{% url 'lista_rutinas' %}">Rutinas</a>
+            <a href="{% url 'crear_rutina' %}">Crear Rutina</a>
+            <a href="{% url 'logout' %}" class="logout-btn">Cerrar sesión</a>
+
+        {% else %}
+            <a href="{% url 'login' %}" class="login-btn">Login</a>
+        {% endif %}
+    </div>
+
+</nav>
+
+<!-- CONTENIDO -->
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

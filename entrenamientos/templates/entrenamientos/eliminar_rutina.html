@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="delete-card">
+
+    <h2>Eliminar Rutina</h2>
+
+    <p>
+        ¿Seguro que quieres eliminar
+        <strong>{{ rutina.nombre }}</strong>?
+    </p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="delete-actions">
+            <button type="submit" class="btn-eliminar">
+                Sí, eliminar
+            </button>
+
+            <a href="{% url 'lista_rutinas' %}" class="btn-secondary">
+                Cancelar
+            </a>
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

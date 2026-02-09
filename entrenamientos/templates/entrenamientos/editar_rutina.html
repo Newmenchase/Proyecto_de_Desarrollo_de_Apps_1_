@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card-premium">
+    <h2>Editar Rutina</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn-primary">
+            Guardar Cambios
+        </button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="titulo-seccion">Mis Rutinas</h1>
+
+<div class="rutinas-grid">
+
+    {% for rutina in rutinas %}
+    <div class="rutina-card">
+
+        <h2>{{ rutina.nombre }}</h2>
+
+        <p class="tipo">
+            {{ rutina.get_tipo_display }}
+        </p>
+
+        <p class="descripcion">
+            {{ rutina.descripcion|truncatechars:120 }}
+        </p>
+
+        <div class="card-botones">
+            <a href="{% url 'detalle_rutina' rutina.id %}" class="btn-ver">
+                Ver
+            </a>
+
+            <a href="{% url 'editar_rutina' rutina.id %}" class="btn-editar">
+                Editar
+            </a>
+
+            <a href="{% url 'eliminar_rutina' rutina.id %}" class="btn-eliminar">
+                Eliminar
+            </a>
+        </div>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
